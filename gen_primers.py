@@ -1,46 +1,24 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
-
-
-import sys
-#import numpy as np
-
-
-# In[73]:
-
-
-
-           
-            
-
-
-# In[48]:
-
-
 d = {}
 with open("codons") as f:
     for line in f:
        (codon, aa, key, w) = line.split()
        d[key] = codon
-
-
-# In[79]:
-
-
+           
 def gen_seq(fasta):
     
     n = len(fasta)
-
     out=""
-    #iterate over mutation positions
 
+    #iterate over mutation positions
     for i in range(2,n):
         mod = [1]*n
         # 1: 1st choice; 2: 2nd choice; 0:NNK
         mod[i] = 0
 
+        #mark none MW positions to barcode
         left = 2
         resi = i
         while left != 0:
@@ -49,8 +27,6 @@ def gen_seq(fasta):
                 left -= 1
             resi -= 1
 
-        #mod[i-1] = 2
-        #mod[i-2] = 2
 
         #write each seqs
         seq = ""
@@ -64,15 +40,10 @@ def gen_seq(fasta):
 
         seq += "\n"
         out += seq
-        
+           
     return out
 
-            
-
-
-# In[80]:
-
-
+#main
 primers = ""
 with open("input.fasta") as f:
     for line in f:
@@ -80,22 +51,10 @@ with open("input.fasta") as f:
         fasta = [i for i in s]
         primers += gen_seq(fasta)
 
-
-# In[75]:
-
-
-
-
-
-# In[81]:
-
-
+#write to files
 f = open("primers.txt","w")
 f.write(primers)
 f.close
-
-
-# In[ ]:
 
 
 
