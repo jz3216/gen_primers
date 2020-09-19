@@ -1,4 +1,6 @@
-convert AA sequence to primer DNA sequences with barcodes preceeding mutated positions
+##gen_primers
 
-usage:
-just run gen_primers.py with the files codons and input.fasta present in the same folder.
+	convert AA sequence to primer DNA sequences with barcodes preceeding mutated positions
+
+#usage:
+	just run gen_primers.py with the files *codons* and *input.fasta* present in the same folder.
