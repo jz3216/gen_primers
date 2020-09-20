@@ -52,10 +52,11 @@ with open("input.fasta") as f:
         primers += gen_seq(fasta)
 
 #write to files
-f = open("primers.txt","w")
-f.write(primers)
-f.close
+#f = open("primers.txt","w")
+#f.write(primers)
 
+with open('primers.txt', 'w') as f:
+    f.write(primers)
 
 
 
